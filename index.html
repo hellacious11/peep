@@ -386,7 +386,7 @@
 
       async function updateBal() {
         const bal = await getTokensByUser();
-        updateBalText(bal);
+        updateBalText(bal || 0);
       }
 
       updateETHReward();
