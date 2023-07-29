@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+y
 <html>
   <head>
     <title>Mystery Box</title>
@@ -9,7 +9,8 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/web3@4.0.3/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/5.2.2/big.min.js"></script>
 
     <style>
       @font-face {
@@ -131,6 +132,16 @@
         font-family: "Quin", sans-serif;
         border: 0;
       }
+
+      #conn-as,
+      #Bal {
+        margin: 30px 0;
+        opacity: 0.5;
+      }
+
+      .hide {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -154,8 +165,8 @@
       <p class="hint">
         <!-- <b> -->
         Whoever solves the riddle will receive a bounty worth
-        <span id="reward-amt">6</span> ETH. The riddle is embeded on-chain. You
-        will to burn 1000 MYSTERY to participate.
+        <span id="reward-amt">-</span> ETH. The riddle is embeded on-chain. You
+        will need to burn 1000 MYSTERY to participate.
         <!-- </b> -->
       </p>
 
@@ -168,10 +179,10 @@
       <p>
         CA:
         <a
-          href="https://etherscan.io/token/0xACE6dD28E046Ff370C473F478d709371F0689C18"
+          href="https://etherscan.io/token/0x631EF9d9b7c258A27BFf064b3065033dF163Df74"
           target="_blank"
         >
-          0xACE6dD28E046Ff370C473F478d709371F0689C18
+          0x631EF9d9b7c258A27BFf064b3065033dF163Df74
         </a>
       </p>
       <p>
@@ -182,47 +193,119 @@
       </p>
       <p>
         Click here to
-        <a href="https://t.me/harrypotterganjaeth" target="_blank">
+        <a
+          href="https://app.uniswap.org/#/swap?outputCurrency=0xd40efdAc44f1aEaC08993aB0Fb6f995547248AA2&exactAmount=1000&exactField=output"
+          target="_blank"
+        >
           BUY 1000 MYSTERY
         </a>
       </p>
     </div>
 
     <div></div>
-    <h2>PRIZE: <span id="reward-amt-2">6</span> ETH</h2>
+    <h2>PRIZE: <span id="reward-amt-2">-</span> ETH</h2>
 
     <div class="content-2">
-      <input placeholder="What is the answer?" val />
+      <input placeholder="What is the answer?" id="answer" />
 
       <button onclick="connectToWallet()" class="btn" id="connect">
         Connect Wallet
       </button>
-      <button class="btn" id="submit">Submit the Answer</button>
+      <button onclick="submitAnswer()" class="btn hide" id="submit">
+        Submit the Answer
+      </button>
+    </div>
+    <div id="conn-as" class="hide">
+      connected as <span id="who"></span>
+      <br />
+      You have <span id="bal-amt">0</span> MYSTERY. Buy more from
+      <a
+        href="https://app.uniswap.org/#/swap?outputCurrency=0xd40efdAc44f1aEaC08993aB0Fb6f995547248AA2&exactAmount=1000&exactField=output"
+        target="_blank"
+      >
+        Uniswap
+      </a>
     </div>
 
     <canvas id="c"></canvas>
 
     <script>
-      function updateETHReward(eth) {
-        // todo: query the eth in LP
-
+      function updateETHRewardText(eth) {
         document.getElementById("reward-amt").innerHTML = eth;
         document.getElementById("reward-amt-2").innerHTML = eth;
       }
 
-      updateETHReward("500");
+      function updateBalText(eth) {
+        document.getElementById("bal-amt").innerHTML = eth;
+      }
     </script>
 
     <script>
+      const tokenAddress = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
+      const wethAddress = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
+      const lpAddress = "0x9dfc7e1aa6fc978cb0ee6027683942bc2a2029ac";
+
+      const web3 = new Web3(
+        new Web3.providers.HttpProvider(
+          "https://eth-mainnet.g.alchemy.com/v2/S1uhemXinEen1lPCLZAJFI9MOZhoVTNC"
+        )
+      );
+
+      // const e18 = new BigInt(10).pow(18);
+
+      const ERC20ABI = [
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "theAnswer",
+              type: "bytes32",
+            },
+          ],
+          name: "solveRiddle",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          constant: true,
+          inputs: [
+            {
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              name: "balance",
+              type: "uint256",
+            },
+          ],
+          payable: false,
+          stateMutability: "view",
+          type: "function",
+        },
+      ];
+
       // Function to connect to the user's wallet
       async function connectToWallet() {
         if (typeof window.ethereum !== "undefined") {
-          web3 = new Web3(window.ethereum);
           try {
             // Request access to the user's accounts
             await window.ethereum.enable();
             // contract = new web3.eth.Contract(contractABI, contractAddress);
             console.log("Connected to wallet.");
+            document.getElementById("connect").remove();
+
+            const accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            });
+
+            document.getElementById("submit").className = "btn";
+
+            document.getElementById("who").innerHTML = accounts[0];
+            document.getElementById("conn-as").className = "";
           } catch (error) {
             alert("User denied account access.");
           }
@@ -230,6 +313,85 @@
           alert("Web3 not found. Please install a wallet like MetaMask.");
         }
       }
+
+      // Function to call a function in the smart contract
+      async function getETHinLP() {
+        try {
+          // Replace 'yourFunction' with the function name in your smart contract
+          const contract = new web3.eth.Contract(ERC20ABI, wethAddress);
+          const result = await contract.methods
+            .balanceOf(lpAddress)
+            .call({ from: web3.eth.defaultAccount });
+
+          const val = (BigInt(result) * 1000n) / BigInt(1e18);
+          return Math.max(Number(val) / 1000, 1);
+        } catch (error) {
+          console.error("Error calling smart contract function.", error);
+        }
+      }
+
+      // Function to call a function in the smart contract
+      async function submitAnswer() {
+        try {
+          const amt = Number(document.getElementById("bal-amt").innerHTML);
+          const answer = document.getElementById("answer").value;
+
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+
+          const from = ccounts[0];
+
+          if (amt < 1000) {
+            return alert(
+              "You have less than 1000 MYSTERY. Buy some tokens from Uniswap to solve the riddle"
+            );
+          }
+
+          // Replace 'yourFunction' with the function name in your smart contract
+          const contract = new web3.eth.Contract(ERC20ABI, tokenAddress);
+          const result = await contract.methods
+            .solveRiddle(answer)
+            .call({ from: from });
+
+          const val = (BigInt(result) * 1000n) / BigInt(1e18);
+          console.log(Number(val) / 1000);
+          console.log("Smart contract function called successfully.", result);
+          return Math.max(Number(val) / 1000, 1);
+        } catch (error) {
+          console.error("Error calling smart contract function.", error);
+        }
+      }
+
+      async function getTokensByUser() {
+        try {
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+
+          // Replace 'yourFunction' with the function name in your smart contract
+          const contract = new web3.eth.Contract(ERC20ABI, tokenAddress);
+          const result = await contract.methods.balanceOf(accounts[0]).call();
+          const val = (BigInt(result) * 1000n) / BigInt(1e18);
+          const bal = Number(val) / 1000;
+        } catch (error) {
+          console.error("Error calling smart contract function.", error);
+        }
+      }
+
+      async function updateETHReward() {
+        const eth = await getETHinLP();
+        updateETHRewardText(eth);
+      }
+
+      async function updateBal() {
+        const bal = await getTokensByUser();
+        updateBalText(bal);
+      }
+
+      updateETHReward();
+      setInterval(updateETHReward, 2000);
+      setInterval(updateBal, 5000);
     </script>
 
     <script>
