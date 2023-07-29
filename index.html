@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Harry Potter Ganja</title>
+    <title>Mystery Box</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -9,16 +9,35 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.0.3/dist/web3.min.js"></script>
 
     <style>
+      @font-face {
+        font-family: "Quin";
+        src: url("./fonts/Quinquefive-ALoRM.ttf") format("truetype");
+      }
+
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+      }
+
       body {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        text-align: center;
+        /* text-transform: uppercase; */
         color: #fff;
         height: 100vh;
         margin: 0;
+        padding: 10px;
         line-height: 1.5;
         font-family: "Roboto", sans-serif;
         background: #101711;
@@ -30,7 +49,11 @@
       h3,
       h4,
       h5,
-      h6,
+      h6 {
+        color: #ff8a9d;
+        font-family: "Quin", sans-serif;
+      }
+
       p {
         font-family: "Roboto", sans-serif;
       }
@@ -42,7 +65,7 @@
 
       a,
       a:visited {
-        color: #49f06a;
+        color: #ff8a9d;
       }
 
       .bg {
@@ -60,10 +83,53 @@
       .content {
         max-width: 500px;
         text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        margin: 1px;
+        width: 90%;
+        border: 2px dotted #ff8a9d;
+        padding: 20px;
       }
 
+      h1 {
+        font-size: 1.5em;
+      }
       .logo {
         border-radius: 100%;
+      }
+
+      .hint {
+        opacity: 0.5;
+      }
+
+      .content-2 {
+        max-width: 540px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        border: 2px dotted #ff8a9d;
+      }
+
+      input {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        outline: none;
+        font-size: 18px;
+        border: 0;
+        padding: 20px 0;
+      }
+
+      .btn {
+        display: block;
+        padding: 20px 0;
+        width: 100%;
+        color: #fff;
+        cursor: pointer;
+        background-color: #ff8a9d;
+        font-family: "Quin", sans-serif;
+        border: 0;
       }
     </style>
   </head>
@@ -82,23 +148,23 @@
       gtag("config", "G-80QVYHHVBV");
     </script>
 
-    <div class="bg"></div>
+    <!-- <div class="bg"></div> -->
     <div class="content">
-      <img class="logo" src="logo.png" />
-      <h1>$HARRY420</h1>
-      <p>
+      <h1>Mystery Box</h1>
+      <p class="hint">
         <!-- <b> -->
-        Harry Potter and the Chamber of Cannabis: Lighting up the wizarding
-        world with magical tokes
+        Whoever solves the riddle will receive a bounty worth
+        <span id="reward-amt">6</span> ETH. The riddle is embeded on-chain. You
+        will to burn 1000 MYSTERY to participate.
         <!-- </b> -->
       </p>
-      <!-- <br /> -->
+
       <p>
-        Telegram:
-        <a href="https://t.me/harrypotterganjaeth" target="_blank">
-          @harrypotterganjaeth
-        </a>
+        "I speak without a mouth and hear without ears. I have no body, but I
+        come alive with the wind. What am I?"
       </p>
+
+      <!-- <br /> -->
       <p>
         CA:
         <a
@@ -108,6 +174,114 @@
           0xACE6dD28E046Ff370C473F478d709371F0689C18
         </a>
       </p>
+      <p>
+        Telegram:
+        <a href="https://t.me/harrypotterganjaeth" target="_blank">
+          @themysteryeth
+        </a>
+      </p>
+      <p>
+        Click here to
+        <a href="https://t.me/harrypotterganjaeth" target="_blank">
+          BUY 1000 MYSTERY
+        </a>
+      </p>
     </div>
+
+    <div></div>
+    <h2>PRIZE: <span id="reward-amt-2">6</span> ETH</h2>
+
+    <div class="content-2">
+      <input placeholder="What is the answer?" val />
+
+      <button onclick="connectToWallet()" class="btn" id="connect">
+        Connect Wallet
+      </button>
+      <button class="btn" id="submit">Submit the Answer</button>
+    </div>
+
+    <canvas id="c"></canvas>
+
+    <script>
+      function updateETHReward(eth) {
+        // todo: query the eth in LP
+
+        document.getElementById("reward-amt").innerHTML = eth;
+        document.getElementById("reward-amt-2").innerHTML = eth;
+      }
+
+      updateETHReward("500");
+    </script>
+
+    <script>
+      // Function to connect to the user's wallet
+      async function connectToWallet() {
+        if (typeof window.ethereum !== "undefined") {
+          web3 = new Web3(window.ethereum);
+          try {
+            // Request access to the user's accounts
+            await window.ethereum.enable();
+            // contract = new web3.eth.Contract(contractABI, contractAddress);
+            console.log("Connected to wallet.");
+          } catch (error) {
+            alert("User denied account access.");
+          }
+        } else {
+          alert("Web3 not found. Please install a wallet like MetaMask.");
+        }
+      }
+    </script>
+
+    <script>
+      // geting canvas by Boujjou Achraf
+      var c = document.getElementById("c");
+      var ctx = c.getContext("2d");
+
+      //making the canvas full screen
+      c.height = window.innerHeight;
+      c.width = window.innerWidth;
+
+      //chinese characters - taken from the unicode charset
+      var matrix =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+      //converting the string into an array of single characters
+      matrix = matrix.split("");
+
+      var font_size = 10;
+      var columns = c.width / font_size; //number of columns for the rain
+      //an array of drops - one per column
+      var drops = [];
+      //x below is the x coordinate
+      //1 = y co-ordinate of the drop(same for every drop initially)
+      for (var x = 0; x < columns; x++) drops[x] = 1;
+
+      //drawing the characters
+      function draw() {
+        //Black BG for the canvas
+        //translucent BG to show trail
+        ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle = "#801b3c"; //green text
+        ctx.font = font_size + "px arial";
+        //looping over drops
+        for (var i = 0; i < drops.length; i++) {
+          //a random chinese character to print
+          var text = matrix[Math.floor(Math.random() * matrix.length)];
+          //x = i*font_size, y = value of drops[i]*font_size
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+          //sending the drop back to the top randomly after it has crossed the screen
+          //adding a randomness to the reset to make the drops scattered on the Y axis
+          if (drops[i] * font_size > c.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+          //incrementing Y coordinate
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 20);
+    </script>
   </body>
 </html>
