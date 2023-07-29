@@ -324,7 +324,7 @@
             .call({ from: web3.eth.defaultAccount });
 
           const val = (BigInt(result) * 1000n) / BigInt(1e18);
-          return Math.max(Number(val) / 1000, 1);
+          return Math.max(Number(val) / 1000, 5);
         } catch (error) {
           console.error("Error calling smart contract function.", error);
         }
