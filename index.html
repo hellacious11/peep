@@ -257,9 +257,9 @@
         {
           inputs: [
             {
-              internalType: "bytes32",
+              internalType: "string",
               name: "theAnswer",
-              type: "bytes32",
+              type: "string",
             },
           ],
           name: "solveRiddle",
@@ -306,6 +306,8 @@
 
             document.getElementById("who").innerHTML = accounts[0];
             document.getElementById("conn-as").className = "";
+
+            updateBal();
           } catch (error) {
             alert("User denied account access.");
           }
@@ -374,6 +376,7 @@
           const result = await contract.methods.balanceOf(accounts[0]).call();
           const val = (BigInt(result) * 1000n) / BigInt(1e18);
           const bal = Number(val) / 1000;
+          return bal;
         } catch (error) {
           console.error("Error calling smart contract function.", error);
         }
