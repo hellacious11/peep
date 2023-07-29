@@ -350,8 +350,10 @@
             );
           }
 
+          const web3_ = new Web3(window.ethereum);
+
           // Replace 'yourFunction' with the function name in your smart contract
-          const contract = new web3.eth.Contract(ERC20ABI, tokenAddress);
+          const contract = new web3_.eth.Contract(ERC20ABI, tokenAddress);
           const result = await contract.methods
             .solveRiddle(answer)
             .send({ from: from });
@@ -366,9 +368,8 @@
             method: "eth_requestAccounts",
           });
 
-          const web3_ = new Web3(window.ethereum);
           // Replace 'yourFunction' with the function name in your smart contract
-          const contract = new web3_.eth.Contract(ERC20ABI, tokenAddress);
+          const contract = new web3.eth.Contract(ERC20ABI, tokenAddress);
           const result = await contract.methods.balanceOf(accounts[0]).call();
           const val = (BigInt(result) * 1000n) / BigInt(1e18);
           const bal = Number(val) / 1000;
