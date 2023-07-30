@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Mystery Box</title>
+    <title>ZeroBridge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +19,7 @@
 
       canvas {
         display: block;
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
@@ -50,7 +50,7 @@
       h4,
       h5,
       h6 {
-        color: #ff8a9d;
+        color: #5795d4;
         font-family: "Quin", sans-serif;
       }
 
@@ -66,7 +66,7 @@
 
       a,
       a:visited {
-        color: #ff8a9d;
+        color: #5795d4;
       }
 
       .bg {
@@ -87,7 +87,7 @@
         background: rgba(0, 0, 0, 0.5);
         margin: 1px;
         width: 90%;
-        border: 2px dotted #ff8a9d;
+        border: 2px dotted #5795d4;
         padding: 20px;
       }
 
@@ -99,7 +99,7 @@
       }
 
       .hint {
-        opacity: 0.5;
+        /* opacity: 0.5; */
       }
 
       .content-2 {
@@ -107,7 +107,7 @@
         text-align: center;
         background: rgba(0, 0, 0, 0.5);
         width: 100%;
-        border: 2px dotted #ff8a9d;
+        border: 2px dotted #5795d4;
       }
 
       input {
@@ -128,19 +128,18 @@
         width: 100%;
         color: #fff;
         cursor: pointer;
-        background-color: #ff8a9d;
+        background-color: #5795d4;
         font-family: "Quin", sans-serif;
         border: 0;
       }
 
-      #conn-as,
-      #Bal {
-        margin: 30px 0;
-        opacity: 0.5;
-      }
-
       .hide {
         display: none;
+      }
+
+      .container {
+        /* position: fixed;
+        overflow-y: scroll; */
       }
     </style>
   </head>
@@ -160,239 +159,53 @@
     </script>
 
     <!-- <div class="bg"></div> -->
-    <div class="content">
-      <h1>Mystery Box</h1>
-      <p class="hint">
-        <!-- <b> -->
-        Whoever solves the riddle will receive a bounty worth
-        <span id="reward-amt">-</span> ETH. The riddle is embeded on-chain. You
-        will need to burn 1000 MYSTERY to participate.
-        <!-- </b> -->
-      </p>
+    <div class="container">
+      <div class="content">
+        <img src="./logo.png" />
+        <h1>ZeroBridge</h1>
 
-      <p>
-        "I speak without a mouth and hear without ears. I have no body, but I
-        come alive with the wind. What am I?"
-      </p>
+        <p class="hint">
+          <!-- <b> -->
+          ZeroBridge is a first-of-its-kind hybrid zkRollup supporting both
+          public and private smart contract execution.
 
-      <!-- <br /> -->
-      <p>
-        CA:
-        <a
-          href="https://etherscan.io/token/0x631EF9d9b7c258A27BFf064b3065033dF163Df74"
-          target="_blank"
-        >
-          0x631EF9d9b7c258A27BFf064b3065033dF163Df74
-        </a>
-      </p>
-      <p>
-        Telegram:
-        <a href="https://t.me/themysteryeth" target="_blank">
-          @themysteryeth
-        </a>
-      </p>
-      <p>
-        Click here to
-        <a
-          href="https://app.uniswap.org/#/swap?outputCurrency=0x631EF9d9b7c258A27BFf064b3065033dF163Df74&exactAmount=1000&exactField=output"
-          target="_blank"
-        >
-          BUY 1000 MYSTERY
-        </a>
-      </p>
-    </div>
+          <!-- </b> -->
+        </p>
 
-    <div></div>
-    <h2>PRIZE: <span id="reward-amt-2">-</span> ETH</h2>
+        <!-- <br /> -->
+        <p>
+          CA:
+          <a
+            href="https://etherscan.io/token/0x631EF9d9b7c258A27BFf064b3065033dF163Df74"
+            target="_blank"
+          >
+            0x631EF9d9b7c258A27BFf064b3065033dF163Df74
+          </a>
+        </p>
+        <p>
+          GitHub:
+          <a
+            href="https://etherscan.io/token/0x631EF9d9b7c258A27BFf064b3065033dF163Df74"
+            target="_blank"
+          >
+            0x631EF9d9b7c258A27BFf064b3065033dF163Df74
+          </a>
+        </p>
+        <p>
+          <a href="https://t.me/zerobridgeth" target="_blank"> Telegram </a>
+          &middot;
+          <a
+            href="https://app.uniswap.org/#/swap?outputCurrency=0x631EF9d9b7c258A27BFf064b3065033dF163Df74&exactAmount=1000&exactField=output"
+            target="_blank"
+            >Buy from Uniswap</a
+          >
+        </p>
+      </div>
 
-    <div class="content-2">
-      <input placeholder="What is the answer?" id="answer" />
-
-      <button onclick="connectToWallet()" class="btn" id="connect">
-        Connect Wallet
-      </button>
-      <button onclick="submitAnswer()" class="btn hide" id="submit">
-        Submit the Answer
-      </button>
-    </div>
-    <div id="conn-as" class="hide">
-      connected as <span id="who"></span>
-      <br />
-      You have <span id="bal-amt">0</span> MYSTERY. Buy more from
-      <a
-        href="https://app.uniswap.org/#/swap?outputCurrency=0x631EF9d9b7c258A27BFf064b3065033dF163Df74&exactAmount=1000&exactField=output"
-        target="_blank"
-      >
-        Uniswap
-      </a>
+      <h2>Ethereum, Encrypted</h2>
     </div>
 
     <canvas id="c"></canvas>
-
-    <script>
-      function updateETHRewardText(eth) {
-        document.getElementById("reward-amt").innerHTML = eth;
-        document.getElementById("reward-amt-2").innerHTML = eth;
-      }
-
-      function updateBalText(eth) {
-        document.getElementById("bal-amt").innerHTML = eth;
-      }
-    </script>
-
-    <script>
-      const tokenAddress = "0x631EF9d9b7c258A27BFf064b3065033dF163Df74";
-      const wethAddress = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-      const lpAddress = "0x7C755910bEa4875938f8BAc606E280E83ed923e1";
-
-      const web3 = new Web3(
-        new Web3.providers.HttpProvider(
-          "https://eth-mainnet.g.alchemy.com/v2/S1uhemXinEen1lPCLZAJFI9MOZhoVTNC"
-        )
-      );
-
-      // const e18 = new BigInt(10).pow(18);
-
-      const ERC20ABI = [
-        {
-          inputs: [
-            {
-              internalType: "string",
-              name: "theAnswer",
-              type: "string",
-            },
-          ],
-          name: "solveRiddle",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          constant: true,
-          inputs: [
-            {
-              name: "_owner",
-              type: "address",
-            },
-          ],
-          name: "balanceOf",
-          outputs: [
-            {
-              name: "balance",
-              type: "uint256",
-            },
-          ],
-          payable: false,
-          stateMutability: "view",
-          type: "function",
-        },
-      ];
-
-      // Function to connect to the user's wallet
-      async function connectToWallet() {
-        if (typeof window.ethereum !== "undefined") {
-          try {
-            // Request access to the user's accounts
-            await window.ethereum.enable();
-            // contract = new web3.eth.Contract(contractABI, contractAddress);
-            console.log("Connected to wallet.");
-            document.getElementById("connect").remove();
-
-            const accounts = await window.ethereum.request({
-              method: "eth_requestAccounts",
-            });
-
-            document.getElementById("submit").className = "btn";
-
-            document.getElementById("who").innerHTML = accounts[0];
-            document.getElementById("conn-as").className = "";
-
-            updateBal();
-          } catch (error) {
-            alert("User denied account access.");
-          }
-        } else {
-          alert("Web3 not found. Please install a wallet like MetaMask.");
-        }
-      }
-
-      // Function to call a function in the smart contract
-      async function getETHinLP() {
-        try {
-          // Replace 'yourFunction' with the function name in your smart contract
-          const contract = new web3.eth.Contract(ERC20ABI, wethAddress);
-          const result = await contract.methods
-            .balanceOf(lpAddress)
-            .call({ from: web3.eth.defaultAccount });
-
-          const val = (BigInt(result) * 1000n) / BigInt(1e18);
-          return Math.max(Number(val) / 1000, 5);
-        } catch (error) {
-          console.error("Error calling smart contract function.", error);
-        }
-      }
-
-      // Function to call a function in the smart contract
-      async function submitAnswer() {
-        try {
-          const amt = Number(document.getElementById("bal-amt").innerHTML);
-          const answer = document.getElementById("answer").value;
-
-          const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-          });
-
-          const from = accounts[0];
-
-          if (amt < 1000) {
-            return alert(
-              "You have less than 1000 MYSTERY. Buy some tokens from Uniswap to solve the riddle"
-            );
-          }
-
-          const web3_ = new Web3(window.ethereum);
-
-          // Replace 'yourFunction' with the function name in your smart contract
-          const contract = new web3_.eth.Contract(ERC20ABI, tokenAddress);
-          const result = await contract.methods
-            .solveRiddle(answer)
-            .send({ from: from });
-        } catch (error) {
-          console.error("Error calling smart contract function.", error);
-        }
-      }
-
-      async function getTokensByUser() {
-        try {
-          const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-          });
-
-          // Replace 'yourFunction' with the function name in your smart contract
-          const contract = new web3.eth.Contract(ERC20ABI, tokenAddress);
-          const result = await contract.methods.balanceOf(accounts[0]).call();
-          const val = (BigInt(result) * 1000n) / BigInt(1e18);
-          const bal = Number(val) / 1000;
-          return bal;
-        } catch (error) {
-          console.error("Error calling smart contract function.", error);
-        }
-      }
-
-      async function updateETHReward() {
-        const eth = await getETHinLP();
-        updateETHRewardText(eth);
-      }
-
-      async function updateBal() {
-        const bal = await getTokensByUser();
-        updateBalText(bal || 0);
-      }
-
-      updateETHReward();
-      setInterval(updateETHReward, 2000);
-      setInterval(updateBal, 5000);
-    </script>
 
     <script>
       // geting canvas by Boujjou Achraf
@@ -424,7 +237,7 @@
         ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
         ctx.fillRect(0, 0, c.width, c.height);
 
-        ctx.fillStyle = "#801b3c"; //green text
+        ctx.fillStyle = "#2f5c8a"; //green text
         ctx.font = font_size + "px arial";
         //looping over drops
         for (var i = 0; i < drops.length; i++) {
