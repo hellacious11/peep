@@ -1,15 +1,19 @@
 <html>
   <head>
-    <title>BaldDAO</title>
+    <title>BaldDAO - $BALDDAO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/5.2.2/big.min.js"></script>
 
     <style>
       @font-face {
@@ -40,7 +44,7 @@
         padding: 10px;
         line-height: 1.5;
         font-family: "Roboto", sans-serif;
-        background: #101711;
+        background: #67a7d2;
         font-family: Arial, sans-serif;
       }
 
@@ -50,8 +54,9 @@
       h4,
       h5,
       h6 {
-        color: #5795d4;
-        font-family: "Quin", sans-serif;
+        color: #67a7d2;
+        font-family: "Sora", sans-serif;
+        /* font-family: "Quin", sans-serif; */
       }
 
       p {
@@ -59,18 +64,22 @@
         overflow: hidden;
       }
       img {
-        width: 300px;
+        width: 250px;
+        height: 250px;
         height: auto;
         margin-top: 20px;
+        border-radius: 100%;
       }
 
       a,
       a:visited {
-        color: #5795d4;
+        color: #67a7d2;
+        font-weight: bold;
       }
 
       .bg {
-        background-image: url("./bg.avif");
+        /* background-image: url("./bg.avif"); */
+        background-color: #67a7d2;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -87,7 +96,9 @@
         background: rgba(0, 0, 0, 0.5);
         margin: 1px;
         width: 90%;
-        border: 2px dotted #5795d4;
+        border: 2px dotted #fff;
+        background: #fff;
+        color: #000;
         padding: 20px;
       }
 
@@ -107,7 +118,7 @@
         text-align: center;
         background: rgba(0, 0, 0, 0.5);
         width: 100%;
-        border: 2px dotted #5795d4;
+        border: 2px dotted #67a7d2;
       }
 
       input {
@@ -166,7 +177,8 @@
 
         <p class="hint">
           <!-- <b> -->
-          A DAO powered by all the baldness in the world.
+          If you thought being bald was cool, wait till you see a DAO about it.
+          BaldDAO is a DAO powered by all the bald apes in the world.
           <!-- </b> -->
         </p>
 
@@ -174,87 +186,23 @@
         <p>
           CA:
           <a
-            href="https://etherscan.io/token/0x80e9d7301C82b8e730d5bC280D43c5f2f11d1D59"
+            href="https://basescan.org/token/0x4102FE360F11d425A3741bD621B9cAE65cFD7ea4"
             target="_blank"
           >
             0x80e9d7301C82b8e730d5bC280D43c5f2f11d1D59
           </a>
         </p>
+
         <p>
-          GitHub:
+          <!-- <a href="https://t.me/zerobridgetele" target="_blank"> Telegram </a> -->
+          <!-- &middot; -->
           <a
-            href="https://github.com/zerobridgeeth/smart-contracts"
+            href="https://base.leetswap.finance/#/swap?outputCurrency="
             target="_blank"
-          >
-            zerobridgeeth/smart-contracts
-          </a>
-        </p>
-        <p>
-          <a href="https://t.me/zerobridgetele" target="_blank"> Telegram </a>
-          &middot;
-          <a
-            href="https://app.uniswap.org/#/swap?outputCurrency=0x80e9d7301C82b8e730d5bC280D43c5f2f11d1D59"
-            target="_blank"
-            >Buy from Uniswap</a
+            >Buy from Leetswap</a
           >
         </p>
       </div>
-
-      <h2>Ethereum, Encrypted</h2>
     </div>
-
-    <canvas id="c"></canvas>
-
-    <script>
-      // geting canvas by Boujjou Achraf
-      var c = document.getElementById("c");
-      var ctx = c.getContext("2d");
-
-      //making the canvas full screen
-      c.height = window.innerHeight;
-      c.width = window.innerWidth;
-
-      //chinese characters - taken from the unicode charset
-      var matrix =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-      //converting the string into an array of single characters
-      matrix = matrix.split("");
-
-      var font_size = 10;
-      var columns = c.width / font_size; //number of columns for the rain
-      //an array of drops - one per column
-      var drops = [];
-      //x below is the x coordinate
-      //1 = y co-ordinate of the drop(same for every drop initially)
-      for (var x = 0; x < columns; x++) drops[x] = 1;
-
-      //drawing the characters
-      function draw() {
-        //Black BG for the canvas
-        //translucent BG to show trail
-        ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-        ctx.fillRect(0, 0, c.width, c.height);
-
-        ctx.fillStyle = "#2f5c8a"; //green text
-        ctx.font = font_size + "px arial";
-        //looping over drops
-        for (var i = 0; i < drops.length; i++) {
-          //a random chinese character to print
-          var text = matrix[Math.floor(Math.random() * matrix.length)];
-          //x = i*font_size, y = value of drops[i]*font_size
-          ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-          //sending the drop back to the top randomly after it has crossed the screen
-          //adding a randomness to the reset to make the drops scattered on the Y axis
-          if (drops[i] * font_size > c.height && Math.random() > 0.975)
-            drops[i] = 0;
-
-          //incrementing Y coordinate
-          drops[i]++;
-        }
-      }
-
-      setInterval(draw, 20);
-    </script>
   </body>
 </html>
