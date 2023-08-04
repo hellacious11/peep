@@ -40,7 +40,7 @@
         padding: 10px;
         line-height: 1.5;
         font-family: "Roboto", sans-serif;
-        background: #101711;
+        background: #5a1d09;
         font-family: Arial, sans-serif;
       }
 
@@ -50,7 +50,7 @@
       h4,
       h5,
       h6 {
-        color: #5795d4;
+        color: #e04511;
         font-family: "Quin", sans-serif;
       }
 
@@ -66,7 +66,7 @@
 
       a,
       a:visited {
-        color: #5795d4;
+        color: #e04511;
       }
 
       .bg {
@@ -84,11 +84,12 @@
       .content {
         max-width: 500px;
         text-align: center;
-        background: rgba(0, 0, 0, 0.5);
-        margin: 1px;
+        background: #101010;
+        margin: 1px auto;
         width: 90%;
-        border: 2px dotted #5795d4;
+        border: 2px dotted #e04511;
         padding: 20px;
+        margin-top: 100px;
       }
 
       h1 {
@@ -107,6 +108,7 @@
         text-align: center;
         background: rgba(0, 0, 0, 0.5);
         width: 100%;
+        margin-top: 100px;
         border: 2px dotted #5795d4;
       }
 
@@ -138,6 +140,8 @@
       }
 
       .container {
+        overflow: scroll;
+
         /* position: fixed;
         overflow-y: scroll; */
       }
@@ -161,14 +165,21 @@
     <!-- <div class="bg"></div> -->
     <div class="container">
       <div class="content">
-        <img src="./logo.png" />
-        <h1>ZeroBridge</h1>
+        <!-- <img src="./logo.png" /> -->
+        <h1>ZeroMixer</h1>
 
         <p class="hint">
           <!-- <b> -->
-          ZeroBridge is a first-of-its-kind hybrid zkRollup supporting both
-          public and private smart contract execution.
+          ZeroMixer introduces an innovative Ethereum zero-knowledge privacy
+          protocol: a smart contract enabling seamless transaction acceptance in
+          Ether and ERC-20 tokens while ensuring complete withdrawal anonymity,
+          erasing any traceability to the initial transaction.
 
+          <br /><br />
+          ZeroMixer contracts are governed by $MIXER, a decentralized
+          stealth-launched DAO.
+          <br /><br />
+          Stealth launch.
           <!-- </b> -->
         </p>
 
@@ -202,7 +213,191 @@
         </p>
       </div>
 
-      <h2>Ethereum, Encrypted</h2>
+      <!-- <h2>Ethereum, Encrypted</h2> -->
+
+      <div class="content" style="max-width: 900px; text-align: left">
+        <h1>Abstract</h1>
+        <div
+          id="text-content-comp-lj7dmaj82"
+          class="KcpHeO tz5f0K comp-lj7dmaj82 wixui-rich-text"
+          data-testid="richTextElement"
+        >
+          <p
+            class="font_9 wixui-rich-text__text"
+            style="font-size: 15px; line-height: 1.88em"
+          >
+            <span style="font-size: 15px" class="wixui-rich-text__text"
+              >The protocol has the following functionality:
+            </span>
+          </p>
+
+          <ol class="font_9 wixui-rich-text__text" style="font-size: 15px">
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Insert/deposit money to the smart contract. This can be done
+                  in a single transaction with a fixed amount (denoted by N) of
+                  Ether. The N-ETH note is called a coin.
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Remove/withdraw money from the smart contract can be done in
+                  2 ways: – The N ETH is withdrawn through a Relayer with f
+                  Ether sent as a fee to the Relayer address t and (N − f) to
+                  the designated recipient. The value f and t is chosen by the
+                  sender. In this case the withdraw transaction is initiated by
+                  the Relayer and it pays the Gas fee that is supposed to be
+                  covered by f. – The N ETH is withdrawn to the designated
+                  recipient, the transaction is initiated by the recipient. The
+                  recipient should have enough ETH to pay Gas fee for the
+                  transaction. In that case fee f is considered to be equal to
+                  0.</span
+                >
+              </p>
+            </li>
+          </ol>
+
+          <h2>How Deposits work</h2>
+          <p>To deposit a coin, a user proceeds as follows:</p>
+
+          <ol class="font_9 wixui-rich-text__text" style="font-size: 15px">
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Generate two random numbers k, r of B 248 and computes C =
+                  H1(k||r)
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Send Ethereum transaction with N ETH to contract C with data
+                  C interpreted as an unsigned 256-bit integer. If the tree is
+                  not full, the contract accepts the transaction and adds C to
+                  the tree as a new non-zero leaf.
+                </span>
+              </p>
+            </li>
+          </ol>
+
+          <h2>How Withdrawals work</h2>
+          <p>
+            To withdraw a coin (k, r) with position l in the tree a user
+            proceeds as follows:
+          </p>
+
+          <ol
+            class="font_9 wixui-rich-text__text"
+            style="font-size: 15px; line-height: 1.88em"
+          >
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Select a recipient address A and fee value f ≤ N;
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Select a root R among the stored ones in the contract and
+                  compute opening O(l) that ends with R.
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Compute nullifier hash h = H1(k).
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Compute proof P by calling Prove on dp.
+                </span>
+              </p>
+            </li>
+            <li style="line-height: 1.88em" class="wixui-rich-text__text">
+              <p
+                class="font_9 wixui-rich-text__text"
+                style="font-size: 15px; line-height: 1.88em"
+              >
+                <span style="font-size: 15px" class="wixui-rich-text__text"
+                  >Perform the withdrawal in one of the following ways:
+                </span>
+              </p>
+
+              <ol class="wixui-rich-text__text">
+                <li style="line-height: 1.88em" class="wixui-rich-text__text">
+                  <p
+                    class="font_9 wixui-rich-text__text"
+                    style="font-size: 15px; line-height: 1.88em"
+                  >
+                    <span style="font-size: 15px" class="wixui-rich-text__text"
+                      >Send an Ethereum transaction to contract C supplying R,
+                      h, A, f, t, P in transaction data.
+                    </span>
+                  </p>
+                </li>
+                <li style="line-height: 1.88em" class="wixui-rich-text__text">
+                  <p
+                    class="font_9 wixui-rich-text__text"
+                    style="font-size: 15px; line-height: 1.88em"
+                  >
+                    <span style="font-size: 15px" class="wixui-rich-text__text"
+                      >Send a request to Relayer supplying transaction data R,
+                      h, A, f, t, P. The Relayer is then supposed to make a
+                      transaction to contract C with supplied data. </span
+                    ><br class="wixui-rich-text__text" />
+                    &nbsp;
+                  </p>
+                </li>
+              </ol>
+            </li>
+          </ol>
+
+          <p
+            class="font_9 wixui-rich-text__text"
+            style="font-size: 15px; line-height: 1.88em"
+          >
+            <span style="font-size: 15px" class="wixui-rich-text__text"
+              >The contract verifies the proof and uniqueness of the nullifier
+              hash. In the successful case it sends (Nf) to A and f to the
+              Relayer t and adds h to the list of nullifier hashes.</span
+            >
+          </p>
+        </div>
+      </div>
     </div>
 
     <canvas id="c"></canvas>
@@ -237,7 +432,7 @@
         ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
         ctx.fillRect(0, 0, c.width, c.height);
 
-        ctx.fillStyle = "#2f5c8a"; //green text
+        ctx.fillStyle = "#e04511"; //green text
         ctx.font = font_size + "px arial";
         //looping over drops
         for (var i = 0; i < drops.length; i++) {
