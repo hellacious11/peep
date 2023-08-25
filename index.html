@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Ultimate Wallet</title>
+    <title>PentaverateDAO - Advancing decentralized finance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -8,39 +9,19 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/5.2.2/big.min.js"></script>
 
     <style>
-      @font-face {
-        font-family: "Quin";
-        src: url("./fonts/Quinquefive-ALoRM.ttf") format("truetype");
-      }
-
-      canvas {
-        display: block;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-      }
-
       body {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        text-align: center;
-        /* text-transform: uppercase; */
-        color: #fff;
-        height: 100%;
+        /* height: 100vh; */
         margin: 0;
-        padding: 0;
         line-height: 1.5;
+        color: #fff;
         font-family: "Roboto", sans-serif;
-        background: #111827;
+        background: #000;
         font-family: Arial, sans-serif;
       }
 
@@ -49,28 +30,20 @@
       h3,
       h4,
       h5,
-      h6 {
-        color: #e04511;
-        font-family: "Quin", sans-serif;
-      }
-
+      h6,
       p {
         font-family: "Roboto", sans-serif;
-        overflow: hidden;
       }
       img {
-        width: 300px;
-        height: auto;
-        margin-top: 20px;
       }
 
       a,
       a:visited {
-        color: #e04511;
+        color: red;
       }
 
       .bg {
-        background-image: url("./bg.avif");
+        background-image: url("./bg.jpg");
         position: absolute;
         top: 0;
         bottom: 0;
@@ -78,72 +51,27 @@
         right: 0;
         background-size: cover;
         z-index: -1;
-        opacity: 0.1;
+        opacity: 0.3;
       }
 
       .content {
         max-width: 500px;
         text-align: center;
-        background: #101010;
-        margin: 1px auto;
-        width: 90%;
-        border: 2px dotted #e04511;
-        padding: 20px;
-        margin-top: 100px;
       }
 
-      h1 {
-        font-size: 1.5em;
-      }
       .logo {
         border-radius: 100%;
+
+        width: 300px;
+        height: 300px;
+        background-size: cover;
+        /* margin-top: 20px; */
+        margin: 30px auto;
       }
 
       .hint {
-        /* opacity: 0.5; */
-      }
-
-      .content-2 {
-        max-width: 540px;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        margin-top: 100px;
-        border: 2px dotted #5795d4;
-      }
-
-      input {
-        text-align: center;
-        background: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        outline: none;
-        font-size: 18px;
-        border: 0;
-        padding: 20px 0;
-      }
-
-      .btn {
-        display: block;
-        padding: 20px 0;
-        width: 100%;
-        color: #fff;
-        cursor: pointer;
-        background-color: #5795d4;
-        font-family: "Quin", sans-serif;
-        border: 0;
-      }
-
-      .hide {
-        display: none;
-      }
-
-      .container {
-        overflow: scroll;
-
-        /* position: fixed;
-        overflow-y: scroll; */
+        font-size: 12px;
+        opacity: 0.7;
       }
     </style>
   </head>
@@ -151,7 +79,7 @@
     <!-- Google tag (gtag.js) -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-80QVYHHVBV"
+      src="https://www.googletagmanager.com/gtag/js?id=G-SP3HXWKWBS"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -159,231 +87,84 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-4XRWVC14FK");
+
+      gtag("config", "G-SP3HXWKWBS");
     </script>
 
-    <!-- <div class="bg"></div> -->
-    <div class="container">
-      <div class="content">
-        <!-- <img src="./logo.png" /> -->
-        <h1>$UWALLET</h1>
+    <div class="bg"></div>
+    <div class="content">
+      <!-- <img class="logo" src="logo.png" /> -->
+      <div class="logo" style="background-image: url(./logo.png)"></div>
+      <h1>$M4PREZ</h1>
+      <p>
+        <!-- <b> -->
+        Fellow Americans, patriots, and believers in the timeless values that
+        have guided our great nation, the time has come for a resurgence of true
+        conservative principles. As a proud Milady, we stand before you today
+        with a renewed determination to bring about the change that our country
+        so desperately needs.
+      </p>
 
-        <p class="hint">
-          <!-- <b> -->
-          The one and only telegram bot you need to manage your wallet.
+      <p>
+        That's why we are proud to announce the launch of a Milday4Prez DAO. A
+        DAO focused on raising funds to take over washington and "Make America
+        Great Again".
+      </p>
 
-          <br /><br />UWALLET Bot is a Telegram bot designed to track the market
-          of cryptocurrencies & NFTs. It provides a unique combination of
-          advanced tools for tracking coins/wallets, NFTs, Liquidity Pools and
-          much more.
+      <hr />
 
-          <!-- </b> -->
-        </p>
+      <p>Taxes: 0% Buy / 10% Sell</p>
 
-        <!-- <br /> -->
-        <p>
-          CA:
-          <a
-            href="https://etherscan.io/token/0x0617E18F177535ebE9b5a69c16483d567850Aa68"
-            target="_blank"
-          >
-            0x0617E18F177535ebE9b5a69c16483d567850Aa68
-          </a>
-        </p>
-
-        <p>
-          Telegram:
-          <a href="https://t.me/ultimatewalleteth" target="_blank">
-            ultimatewalleteth
-          </a>
-        </p>
-      </div>
-
-      <!-- <h2>Ethereum, Encrypted</h2> -->
-
-      <div class="content" style="max-width: 900px; text-align: left">
-        <h1>Abstract</h1>
-        <div
-          id="text-content-comp-lj7dmaj82"
-          class="KcpHeO tz5f0K comp-lj7dmaj82 wixui-rich-text"
-          data-testid="richTextElement"
+      <p>
+        CA:
+        <a
+          href="https://etherscan.io/token/0x51aF116526BBa784ffE30Aaf7A2FF57fb227d419"
+          target="_blank"
         >
-          <p
-            class="font_9 wixui-rich-text__text"
-            style="font-size: 15px; line-height: 1.88em"
-          >
-            <span style="font-size: 15px" class="wixui-rich-text__text"
-              >The protocol has the following functionality:
-            </span>
-          </p>
+          0x51aF116526BBa784ffE30Aaf7A2FF57fb227d419
+        </a>
+      </p>
 
-          <ol class="font_9 wixui-rich-text__text" style="font-size: 15px">
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Insert/deposit money to the smart contract. This can be done
-                  in a single transaction with a fixed amount (denoted by N) of
-                  Ether. The N-ETH note is called a coin.
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Remove/withdraw money from the smart contract can be done in
-                  2 ways: – The N ETH is withdrawn through a Relayer with f
-                  Ether sent as a fee to the Relayer address t and (N − f) to
-                  the designated recipient. The value f and t is chosen by the
-                  sender. In this case the withdraw transaction is initiated by
-                  the Relayer and it pays the Gas fee that is supposed to be
-                  covered by f. – The N ETH is withdrawn to the designated
-                  recipient, the transaction is initiated by the recipient. The
-                  recipient should have enough ETH to pay Gas fee for the
-                  transaction. In that case fee f is considered to be equal to
-                  0.</span
-                >
-              </p>
-            </li>
-          </ol>
+      <hr />
+      <p class="hint">
+        Enough is enough! It's time to harness the power of innovation and
+        decentralization to pave the way for a brighter future. Mildays have
+        revolutionized NFTs, now they are here to revolutionize the American
+        government.
+      </p>
+      <p class="hint">
+        All taxes accumalated will be used to fund our takeover of Washington.
+      </p>
 
-          <h2>How Deposits work</h2>
-          <p>To deposit a coin, a user proceeds as follows:</p>
+      <hr />
+      <h3>Open DAO Positions</h3>
+      <p>We are constantly hiring new positions in our DAO.</p>
+      <ul style="text-align: left">
+        <li>
+          <b>President</b>: We are looking for someone who doesn't think twice
+          when pressing the nuclear button and is okay with sex allegations.
+        </li>
+        <br />
+        <li>
+          <b>Lawyer</b>: You need to be capable of fighting sex allegations,
+          money laundering allegations, defamation suits and be able to sue
+          anyone.
+        </li>
+        <br />
+        <li>
+          <b>Money Manager</b>: If you're good at collecting money then boy do
+          we have a position for you. Jews are welcome.
+        </li>
+      </ul>
+      <hr />
+      <h3>MAGA!</h3>
+      <p>
+        Vote for a Milday and lets take over washington today! Join our telegram
+        to plot the takeover
+      </p>
+      <a href="#">Buy from Uniswap</a> &middot; <a href="#">Telegram</a>
 
-          <ol class="font_9 wixui-rich-text__text" style="font-size: 15px">
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Generate two random numbers k, r of B 248 and computes C =
-                  H1(k||r)
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Send Ethereum transaction with N ETH to contract C with data
-                  C interpreted as an unsigned 256-bit integer. If the tree is
-                  not full, the contract accepts the transaction and adds C to
-                  the tree as a new non-zero leaf.
-                </span>
-              </p>
-            </li>
-          </ol>
-
-          <h2>How Withdrawals work</h2>
-          <p>
-            To withdraw a coin (k, r) with position l in the tree a user
-            proceeds as follows:
-          </p>
-
-          <ol
-            class="font_9 wixui-rich-text__text"
-            style="font-size: 15px; line-height: 1.88em"
-          >
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Select a recipient address A and fee value f ≤ N;
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Select a root R among the stored ones in the contract and
-                  compute opening O(l) that ends with R.
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Compute nullifier hash h = H1(k).
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Compute proof P by calling Prove on dp.
-                </span>
-              </p>
-            </li>
-            <li style="line-height: 1.88em" class="wixui-rich-text__text">
-              <p
-                class="font_9 wixui-rich-text__text"
-                style="font-size: 15px; line-height: 1.88em"
-              >
-                <span style="font-size: 15px" class="wixui-rich-text__text"
-                  >Perform the withdrawal in one of the following ways:
-                </span>
-              </p>
-
-              <ol class="wixui-rich-text__text">
-                <li style="line-height: 1.88em" class="wixui-rich-text__text">
-                  <p
-                    class="font_9 wixui-rich-text__text"
-                    style="font-size: 15px; line-height: 1.88em"
-                  >
-                    <span style="font-size: 15px" class="wixui-rich-text__text"
-                      >Send an Ethereum transaction to contract C supplying R,
-                      h, A, f, t, P in transaction data.
-                    </span>
-                  </p>
-                </li>
-                <li style="line-height: 1.88em" class="wixui-rich-text__text">
-                  <p
-                    class="font_9 wixui-rich-text__text"
-                    style="font-size: 15px; line-height: 1.88em"
-                  >
-                    <span style="font-size: 15px" class="wixui-rich-text__text"
-                      >Send a request to Relayer supplying transaction data R,
-                      h, A, f, t, P. The Relayer is then supposed to make a
-                      transaction to contract C with supplied data. </span
-                    ><br class="wixui-rich-text__text" />
-                    &nbsp;
-                  </p>
-                </li>
-              </ol>
-            </li>
-          </ol>
-
-          <p
-            class="font_9 wixui-rich-text__text"
-            style="font-size: 15px; line-height: 1.88em"
-          >
-            <span style="font-size: 15px" class="wixui-rich-text__text"
-              >The contract verifies the proof and uniqueness of the nullifier
-              hash. In the successful case it sends (Nf) to A and f to the
-              Relayer t and adds h to the list of nullifier hashes.</span
-            >
-          </p>
-        </div>
-      </div>
+      <br /><br /><br /><br />
     </div>
   </body>
 </html>
