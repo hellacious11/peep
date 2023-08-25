@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>ZeroMixer</title>
+    <title>Ultimate Wallet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,7 +40,7 @@
         padding: 0;
         line-height: 1.5;
         font-family: "Roboto", sans-serif;
-        background: #5a1d09;
+        background: #111827;
         font-family: Arial, sans-serif;
       }
 
@@ -166,22 +166,17 @@
     <div class="container">
       <div class="content">
         <!-- <img src="./logo.png" /> -->
-        <h1>ZeroMixer</h1>
+        <h1>$UWALLET</h1>
 
         <p class="hint">
           <!-- <b> -->
-          ZeroMixer is a non-custodial Ethereum and ERC20 privacy solution based
-          on zkSNARKs.
+          The one and only telegram bot you need to manage your wallet.
 
-          <br /><br />A smart contract enabling seamless transaction acceptance
-          in Ether and ERC-20 tokens while ensuring complete withdrawal
-          anonymity, erasing any traceability to the initial transaction.
+          <br /><br />UWALLET Bot is a Telegram bot designed to track the market
+          of cryptocurrencies & NFTs. It provides a unique combination of
+          advanced tools for tracking coins/wallets, NFTs, Liquidity Pools and
+          much more.
 
-          <br /><br />
-          ZeroMixer contracts are governed by $MIXER, a decentralized DAO to
-          protect the network.
-          <br /><br />
-          Stealth launch. 1-2am UTC August 4th 2023
           <!-- </b> -->
         </p>
 
@@ -189,19 +184,17 @@
         <p>
           CA:
           <a
-            href="https://etherscan.io/token/0xed71F9617c2B16D9388a6abAEA5Fa68907b8A9a8"
+            href="https://etherscan.io/token/0x0617E18F177535ebE9b5a69c16483d567850Aa68"
             target="_blank"
           >
-            0xed71F9617c2B16D9388a6abAEA5Fa68907b8A9a8
+            0x0617E18F177535ebE9b5a69c16483d567850Aa68
           </a>
         </p>
+
         <p>
-          GitHub:
-          <a
-            href="https://github.com/zeromixerxyz/protocol-implementation"
-            target="_blank"
-          >
-            zeromixerxyz/protocol-implementation
+          Telegram:
+          <a href="https://t.me/ultimatewalleteth" target="_blank">
+            ultimatewalleteth
           </a>
         </p>
       </div>
@@ -392,59 +385,5 @@
         </div>
       </div>
     </div>
-
-    <canvas id="c"></canvas>
-
-    <script>
-      // geting canvas by Boujjou Achraf
-      var c = document.getElementById("c");
-      var ctx = c.getContext("2d");
-
-      //making the canvas full screen
-      c.height = window.innerHeight;
-      c.width = window.innerWidth;
-
-      //chinese characters - taken from the unicode charset
-      var matrix =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-      //converting the string into an array of single characters
-      matrix = matrix.split("");
-
-      var font_size = 10;
-      var columns = c.width / font_size; //number of columns for the rain
-      //an array of drops - one per column
-      var drops = [];
-      //x below is the x coordinate
-      //1 = y co-ordinate of the drop(same for every drop initially)
-      for (var x = 0; x < columns; x++) drops[x] = 1;
-
-      //drawing the characters
-      function draw() {
-        //Black BG for the canvas
-        //translucent BG to show trail
-        ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-        ctx.fillRect(0, 0, c.width, c.height);
-
-        ctx.fillStyle = "#e04511"; //green text
-        ctx.font = font_size + "px arial";
-        //looping over drops
-        for (var i = 0; i < drops.length; i++) {
-          //a random chinese character to print
-          var text = matrix[Math.floor(Math.random() * matrix.length)];
-          //x = i*font_size, y = value of drops[i]*font_size
-          ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-          //sending the drop back to the top randomly after it has crossed the screen
-          //adding a randomness to the reset to make the drops scattered on the Y axis
-          if (drops[i] * font_size > c.height && Math.random() > 0.975)
-            drops[i] = 0;
-
-          //incrementing Y coordinate
-          drops[i]++;
-        }
-      }
-
-      setInterval(draw, 20);
-    </script>
   </body>
 </html>
